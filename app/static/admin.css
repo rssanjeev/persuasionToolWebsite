@@ -1,0 +1,80 @@
+body            { font-family: sans-serif; background: linear-gradient(to right, #005AA7, #FFFDE4) }
+h1, h2          { color: #FFFDE4; }
+h1, h2          { font-family: 'Georgia', serif; margin: 0; }
+/* h1              { border-bottom: 2px solid #eee; } */
+h2              { font-size: 1.2em; }
+th,td           { text-align: left; width: auto; vertical-align: top; border: 0.5px solid #000000; padding: 5px; }
+table           { width: 80%; margin: 0 auto;}
+/* a               { color: #4CAF50; } */
+
+.headContainer {
+    margin: 1em auto;
+    width: 55em;
+    border-bottom: 2px solid #eee;
+}
+
+.pageContainer {
+    width: 55em;
+    margin: 1em auto;
+}
+
+.feedbacks {
+    margin: 1em auto;
+    width: auto;
+    border: 1px solid #000000;
+    border-spacing: 0px;
+}
+
+.statement {
+    margin: 1em auto;
+}
+
+.pageTitle {
+    width: 50%;
+    float: left;
+}
+
+.adminEntry {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.init {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.export {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.submitButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 0px;
+    cursor: pointer;
+}
+
+.flash {
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.4);
+    padding: 0.5em;
+    width: 55.6em;
+    height: auto;
+    border: 1px solid #AACBE2;
+    /* animation: shrink 10s linear forwards; */
+}

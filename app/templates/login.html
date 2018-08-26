@@ -1,0 +1,26 @@
+<!doctype html>
+<title>log in</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='login.css') }}">
+<div class=page>
+    <div class=loginPageContainer>
+        <form action="{{ url_for('login') }}" method=post class=login>
+            <div class=loginFormContainer>
+                <div class=usernameContainer>
+                    <label for=username>Username:</label>
+                    <input type=text name=username id=username></input>
+                </div>
+                <div class=passwordContainer>
+                    <label for=password>Password:</label>
+                    <input type=password name=password id=password></input>
+                </div>
+                <div class=loginButtonContainer>
+                    <input id=loginButton type=submit value=login>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}

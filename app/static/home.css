@@ -1,0 +1,214 @@
+body            { font-family: sans-serif; background: linear-gradient(to right, #43C6AC, #191654) }
+h1, h2          { color: #377BA8; }
+h1, h2          { font-family: 'Georgia', serif; margin: 0; }
+/* h1              { border-bottom: 2px solid #eee; } */
+h2              { font-size: 1.2em; }
+th,td           { text-align: left; width: auto; vertical-align: top; }
+table           { width: 80%; margin: 0 auto;}
+/* a               { color: #4CAF50; } */
+
+/* auto induces center position */
+.page {
+    margin: 2em auto;
+    margin-bottom: 0;
+    width: 55em;
+    padding: 0.8em;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.pageTitle {
+    width: 50%;
+    float: left;
+}
+
+.adminEntry {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+.headContainer {
+    border-bottom: 2px solid #eee;
+}
+
+.textAndModels {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.textPartContainer {
+    width: 60%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.compareTextContainer {
+    width: 28%;
+    float: left;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.modelsContainer {
+    width: 35%;
+    float: left;
+    margin-bottom: 1em;
+    margin-left: 1em;
+}
+
+.textPart {
+    margin: 0 auto;
+    /* text-align: center; */
+    /* margin-top: 15px; */
+    width: auto;
+    height: auto;
+}
+
+.modelsPart {
+    margin: 0 auto;
+    margin-top: 1em;
+    width: auto;
+    height: auto;
+}
+
+.checkBoxPartContainer {
+    width: 40%;
+    float: left;
+}
+
+.checkBoxPart {
+    height: auto;
+    text-align: left;
+    margin-top: 1em;
+}
+
+.flash {
+    margin: 0 auto;
+    background-color: rgba(255,255,255,0.4);
+    padding: 0.5em;
+    width: 55.6em;
+    height: auto;
+    border: 1px solid #AACBE2;
+    /* animation: shrink 10s linear forwards; */
+}
+
+.statement {
+    margin: 2em auto;
+    width: auto;
+    padding: 0.8em;
+    background-color: rgba(255,255,255,0.4);
+}
+
+.submitButtonPart {
+    margin: 1em auto;
+    width: 100px;
+    clear: both;
+}
+
+.feedbackContainer {
+    margin: 2em auto;
+    width: 55em;
+    padding: 0.8em;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.textFeedbackContainer {
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+.accurateButton {
+    width: 50%;
+    margin-top: 1em;
+    float: left;
+    text-align: center;
+}
+
+.nonAccurateButton {
+    width: 50%;
+    margin-top: 1em;
+    float: left;
+    text-align: center;
+}
+
+ /* slove the auto height problem of parent div*/
+.clear {
+    clear: both;
+}
+
+.switchContainer {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.switchToCheck {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.switchToCompare {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.submitButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 0px;
+    cursor: pointer;
+}
+
+#accurateSubmit {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 0px;
+    cursor: pointer;
+}
+
+#NonAccurateSubmit {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 0px;
+    cursor: pointer;
+}
+
+#hiddenTextarea {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    float: right;
+}
+
+@keyframes fadeinout {
+    0% { opacity: 1 }
+    80% { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+@keyframes shrink {
+    0% { height: 1em }
+    80% { opacity: 1em }
+    100% { opacity: 0em }
+}

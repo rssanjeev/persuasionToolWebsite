@@ -1,0 +1,31 @@
+{% extends "homepage.html" %}
+{% block feedback %}
+<div class=feedbackContainer>
+    <h2>
+        Please help us with some feedbacks!
+    </h2>
+    <form action="{{ url_for('feedbackCompare2') }}" method=post class=feedback>
+        <div class=textContainer>
+            <p>
+                <b>Do you think your statement is persuasive or not?</b>
+                <b>Enter your feedback below, or just hit the button.</b>
+            </p>
+            <p>
+                <b>Your second statement: </b>{{ feedbackText }}
+            </p>
+            <div class=textFeedbackContainer>
+                <textarea name=textFeedback rows=10 cols=100></textarea>
+            </div>
+        </div>
+        <div class=submitButtonContainer>
+            <div class=accurateButton>
+                <input name=persuasive id=accurateSubmit type=submit value=Persuasive>
+            </div>
+            <div class=nonAccurateButton>
+                <input name=persuasive id=NonAccurateSubmit type=submit value=Nonpersuasive>
+            </div>
+        </div>
+        <div class=clear></div>
+    </form>
+</div>
+{% endblock %}

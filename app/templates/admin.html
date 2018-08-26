@@ -1,0 +1,53 @@
+<!doctype html>
+<title>admin</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='admin.css') }}">
+<div class=headContainer>
+    <div class=pageTitle>
+        <h1>Admin</h1>
+    </div>
+    <div class=adminEntry>
+        <a href="{{ url_for('index') }}">Home</a>
+    </div>
+    <div class=clear></div>
+</div>
+<div class=pageContainer>
+    <table class=feedbacks>
+        <tr><th>Feedback</th>
+            <th>User input</th>
+            <th>Persuasive models</th>
+            <th>Nonpersuasive models</th>
+            <th>Persuasive</th>
+        </tr>
+        {% for f in feedbacks %}
+          <tr>
+              <td>{{ f[0] }}</td>
+              <td>{{ f[1] }}</td>
+              <td>{{ f[2] }}</td>
+              <td>{{ f[3] }}</td>
+              <td>{{ f[4] }}</td>
+          </tr>
+        {% else %}
+          <li><em>No feedbacks so far</em>
+        {% endfor %}
+    </table>
+    <div class=init>
+        <form action="{{ url_for('init') }}" method=post>
+            <input class=submitButton type=submit value="Initiate database">
+        </form>
+    </div>
+    <div class=export>
+        <form action="{{ url_for('export') }}" method=post>
+            <input class=submitButton type=submit value=Export>
+        </form>
+    </div>
+    <div class=clear></div>
+    <div class=statement>
+        <p>
+            <b>All the model names are abbreviations.<br></b>
+            "Gaussian Naive Bayes" - "GNB", "Linear Discriminant Analysis" - "LDA", "Logistic Regression" - "LR",<br> "Support Vector Machine" - "SVM".
+        </p>
+    </div>
+</div>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}

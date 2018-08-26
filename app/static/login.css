@@ -1,0 +1,49 @@
+body            { font-family: sans-serif; background: linear-gradient(to right, #43C6AC, #191654) }
+
+.page {
+    margin: 2em auto;
+    width: 25em;
+    padding: 0.8em;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.loginPageContainer {
+    margin: 2em auto;
+    width: 15em;
+}
+
+.usernameContainer {
+    margin: 1em auto;
+}
+
+.passwordContainer {
+    margin: 1em auto;
+}
+
+.loginButtonContainer {
+    margin: 0em auto;
+    text-align: center;
+}
+
+.flash {
+    margin: 5px auto;
+    background-color: rgba(255,255,255,0.3);
+    padding: 0.5em;
+    width: 55em;
+    height: auto;
+    border: 1px solid #AACBE2;
+    /* animation: shrink 10s linear forwards; */
+}
+
+#loginButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 0px;
+    cursor: pointer;
+}

@@ -1,0 +1,31 @@
+{% extends "homepage.html" %}
+{% block body %}
+<form action="{{ url_for('check') }}" method=post> <!-- delete add-entry -->
+    <div class=textAndModels>
+        <div class=textPartContainer>
+            <div class=textPart>
+                <p>
+                    <b>Enter statement below.<br></b>
+                </p>
+                <textarea name=text rows=10 cols=60></textarea>
+            </div>
+        </div>
+        <div class=checkBoxPartContainer>
+            <p>
+                <b>Choose models below.</b>
+            </p>
+            <div class=checkBoxPart>
+                <!-- <input type="checkbox" name="models" value="DecisionTreeClassifier">DecisionTreeClassifier<br> -->
+                <input type="checkbox" name="models" value="GaussianNB">Gaussian Naive Bayes<br>
+                <!-- <input type="checkbox" name="models" value="KNeighborsClassifier">KNeighborsClassifier<br> -->
+                <input type="checkbox" name="models" value="LinearDiscriminantAnalysis">Linear Discriminant Analysis<br>
+                <input type="checkbox" name="models" value="LogisticRegression">Logistic Regression<br>
+                <input type="checkbox" name="models" value="SupportVectorMachine">Support Vector Machine<br>
+            </div>
+        </div>
+    </div>
+    <div class=submitButtonPart>
+        <input class=submitButton type=submit value=Check>
+    </div>
+</form>
+{% endblock %}

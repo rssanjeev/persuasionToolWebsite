@@ -1,0 +1,38 @@
+<!doctype html>
+<title>Persuasion Tool</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+<div class=page>
+    <div class=headContainer>
+        <div class=pageTitle>
+            <h1>Persuasion Tool</h1>
+        </div>
+        <div class=adminEntry>
+            <a href="{{ url_for('login') }}">Admin</a>
+        </div>
+        <div class=clear></div>
+    </div>
+    <div class=statement>
+        <h3 style="text-align: center;">
+            Is your statement persuasive?
+        </h3>
+        <p>
+            We developed a system to determine whether your statement is persuasive or not. The text you enter below will be analyzed by our machine learning models. When we say a statement is persuasive, that may indicate the statement is easier to be forwarded, liked or something else like that.
+        </p>
+    </div>
+    <div class=switchContainer>
+        <form action="{{ url_for('switch') }}" method=post>
+            <div class=switchToCheck>
+                <input class=submitButton name=switch type=submit value="Check a statement">
+            </div>
+            <div class=switchToCompare>
+                <input class=submitButton name=switch type=submit value="Compare two statements">
+            </div>
+            <div class=clear></div>
+        </form>
+    </div>
+    {% block body %}{% endblock %}
+</div>
+{% for message in get_flashed_messages() %}
+  <div class=flash>{{ message }}</div>
+{% endfor %}
+{% block feedback %}{% endblock %}
