@@ -6,7 +6,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
 app = Flask(__name__)
-app.config.from_envvar('config.py', silent = True)
+app.config.from_envvar('TOOL_SETTINGS', silent = True)
 app.secret_key = "super secret key"
 
 DATABASE = 'app/feedbacks.db'
