@@ -1,1 +1,1 @@
-web: python3 home.py
+web: python3 app/home.py
