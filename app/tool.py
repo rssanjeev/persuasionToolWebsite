@@ -19,7 +19,7 @@ def textCheck(text, models = None):
     if bool(models):
         for model in models:
             if model == "LogisticRegression":
-                loaded_model = joblib.load("../models/LogisticRegression.sav")
+                loaded_model = joblib.load("models/LogisticRegression.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
                 # predictions[0] < 1 means nonpersuasive
