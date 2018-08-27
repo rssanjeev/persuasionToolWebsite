@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config.from_envvar('TOOL_SETTINGS', silent = True)
 app.secret_key = "super secret key"
 
-DATABASE = 'feedbbacks.db'
+DATABASE = 'feedbacks.db'
 abbrDict = {"Gaussian Naive Bayes": "GNB", "Linear Discriminant Analysis": "LDA", "Logistic Regression": "LR", "Support Vector Machine": "SVM"}
 
 def connect_db():
