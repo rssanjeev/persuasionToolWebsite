@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config.from_envvar('TOOL_SETTINGS', silent = True)
 app.secret_key = "super secret key"
 
-DATABASE = 'feedbacks.db'
+DATABASE = 'app/feedbacks.db'
 abbrDict = {"Gaussian Naive Bayes": "GNB", "Linear Discriminant Analysis": "LDA", "Logistic Regression": "LR", "Support Vector Machine": "SVM"}
 
 def connect_db():
@@ -40,7 +40,7 @@ def before_request():
 def init_db():
     with app.app_context():
         db = get_db()
-        with app.open_resource('schema.sql', mode='r') as f:
+        with app.open_resource('app/schema.sql', mode='r') as f:
             db.cursor().executescript(f.read())
         db.commit()
 
