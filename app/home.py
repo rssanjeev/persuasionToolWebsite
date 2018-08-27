@@ -7,7 +7,10 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 app = Flask(__name__)
 app.config.from_envvar('TOOL_SETTINGS', silent = True)
-app.secret_key = "super secret key"
+app.secret_key = "V\x827\\k,\xc1W\x91r\x1a\xcdw\x03\x83\xcd"
+app.config['USERNAME'] = 'BITSLAB'
+app.config['PASSWORD'] = '123'
+# PASSWORD = 'bitslabpersuasion'
 
 DATABASE = 'app/feedbacks.db'
 abbrDict = {"Gaussian Naive Bayes": "GNB", "Linear Discriminant Analysis": "LDA", "Logistic Regression": "LR", "Support Vector Machine": "SVM"}
