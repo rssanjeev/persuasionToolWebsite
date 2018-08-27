@@ -25,27 +25,27 @@ def textCheck(text, models = None):
                 # predictions[0] < 1 means nonpersuasive
                 result.append((predictions[0], prob, "Logistic Regression"))
             if model == "LinearDiscriminantAnalysis":
-                loaded_model = joblib.load("../models/LinearDiscriminantAnalysis.sav")
+                loaded_model = joblib.load("models/LinearDiscriminantAnalysis.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
                 result.append((predictions[0], prob, "Linear Discriminant Analysis"))
             if model == "KNeighborsClassifier":
-                loaded_model = joblib.load("../models/KNeighborsClassifier.sav")
+                loaded_model = joblib.load("models/KNeighborsClassifier.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
                 result.append((predictions[0], prob, model))
             if model == "DecisionTreeClassifier":
-                loaded_model = joblib.load("../models/DecisionTreeClassifier.sav")
+                loaded_model = joblib.load("models/DecisionTreeClassifier.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
                 result.append((predictions[0], prob, model))
             if model == "GaussianNB":
-                loaded_model = joblib.load("../models/GaussianNB.sav")
+                loaded_model = joblib.load("models/GaussianNB.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
                 result.append((predictions[0], prob, "Gaussian Naive Bayes"))
             if model == "SupportVectorMachine":
-                loaded_model = joblib.load("../models/SupportVectorMachine.sav")
+                loaded_model = joblib.load("models/SupportVectorMachine.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.decision_function(data.reshape(1,-1))
                 result.append((predictions[0], prob, "Support Vector Machine"))
