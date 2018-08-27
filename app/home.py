@@ -233,8 +233,10 @@ def init():
 
 @app.route('/admin/export', methods = ['POST'])
 def export():
-    pers = open("app/persuasiveClassification.csv", "a")
-    npers = open("app/npersuasiveClassification.csv", "a")
+    persPath = os.path.join("app", "persuasiveClassification.csv")
+    npersPath = os.path.join("app", "npersuasiveClassification.csv")
+    pers = open(persPath, "a")
+    npers = open(npersPath, "a")
     cur = g.db.execute('select textFeedback, textInput, persModels, nonpersModels, persuasive, wordCount, readabilityScore, ReadabilityGrade, DiractionCount, WPS, Sixltr, pronoun, ppron, i, you, ipron, prep, auxverb, negate, numbers, focuspast, focuspresent, AllPunc, Comma, QMark, Exemplify from feedbacks order by id desc')
     data = [row[:] for row in cur.fetchall()]
     # there is no readabilityGrade in the sheet
