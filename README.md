@@ -40,6 +40,6 @@ This is the Persuasion Tool Website developed for BITSLAB.
   order to have better performance and liability, Heroku choose to
   use dyno to manage the resources. There's no conection between
   different dynos. Thus, it's hard to get data out from it. And, dyno
-  has e ephemeral file system, when it restart, it will lose all dynamic
+  has a ephemeral file system, when it restart, it will lose all dynamic
   data. And all the files will back to the status of the last deployed
   version.
