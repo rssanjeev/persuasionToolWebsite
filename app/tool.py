@@ -7,13 +7,9 @@ import nltk
 import collections as ct
 from nltk import word_tokenize
 
-#filename = 'finalized2_model.sav'
-#loaded_model = joblib.load(filename)
-
-# app=gui()
-
+# input: an english statement
+# output: (persuasion, probability, modelName) persuasion -> 0 or 1
 def textCheck(text, models = None):
-    # results = [key for key, val in selectedModels.items() if val == True]
     data = numpy.array(gettingFeatures(text))
     result = []
     if bool(models):
@@ -22,7 +18,6 @@ def textCheck(text, models = None):
                 loaded_model = joblib.load("models/LogisticRegression.sav")
                 predictions = loaded_model.predict(data.reshape(1,-1))
                 prob = loaded_model.predict_proba(data.reshape(1,-1))
-                # predictions[0] < 1 means nonpersuasive
                 result.append((predictions[0], prob, "Logistic Regression"))
             if model == "LinearDiscriminantAnalysis":
                 loaded_model = joblib.load("models/LinearDiscriminantAnalysis.sav")
@@ -51,6 +46,7 @@ def textCheck(text, models = None):
                 result.append((predictions[0], prob, "Support Vector Machine"))
     return result
 
+# return a list features used in the training set (not all of them)
 def gettingFeatures(text):
         text = text.lower()
 

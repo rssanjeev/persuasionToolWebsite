@@ -7,12 +7,16 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 app = Flask(__name__)
 app.config.from_envvar('TOOL_SETTINGS', silent = True)
+# secret key for flask
 app.secret_key = "V\x827\\k,\xc1W\x91r\x1a\xcdw\x03\x83\xcd"
+# username and password for admin
 app.config['USERNAME'] = 'BITSLAB'
-app.config['PASSWORD'] = '123'
+app.config['PASSWORD'] = 'bitslabpersuasion'
 # PASSWORD = 'bitslabpersuasion'
 
+# local database
 DATABASE = 'app/feedbacks.db'
+# used to get the abbr for model names
 abbrDict = {"Gaussian Naive Bayes": "GNB", "Linear Discriminant Analysis": "LDA", "Logistic Regression": "LR", "Support Vector Machine": "SVM"}
 
 def connect_db():
@@ -51,6 +55,7 @@ def init_db():
 def index():
     return render_template('homepage.html')
 
+# handle events for the homepage, choose function check or compare
 @app.route('/switch', methods = ['POST'])
 def switch():
     if (request.form['switch'] == "Check a statement"):
@@ -59,12 +64,16 @@ def switch():
         return render_template('compare.html', statement1="", statement2="")
     return redirect(url_for('index'))
 
+# handle evens for the check page
 @app.route('/check', methods = ['POST'])
 def check():
+    # empty statement, return a waring
     if (len(request.form['text']) == 0):
         flash("Please enter a statement")
         return render_template('check.html')
+    # save the model names which consider the statement is persuasive
     pers = []
+    # save the model names which consider the statement is nonpersuasive
     nonpers = []
     session['features'] = []
     str1 = ""
@@ -89,6 +98,7 @@ def check():
             str2 += " " + np + ","
         flash("The statement is nonpersuasive using:" + str2[:len(str2) - 1])
 
+    # add model names and statement to seesion, which would be used by the feedback part
     session['checkPersModels'] = []
     session['checkNpersModels'] = []
     session['checkStatement'] = request.form['text']
@@ -100,6 +110,7 @@ def check():
 
     return render_template('feedback.html', feedbackText=session['checkStatement'])
 
+# warning message for no models choosed
 @app.route('/nonmodels', methods = ['POST', 'GET'])
 def nonmodels():
     flash("Please choose at least one model.")
@@ -110,8 +121,10 @@ def nonmodels2():
     flash("Please choose at least one model.")
     return render_template('compare.html')
 
+# handle event for compare page
 @app.route('/compare', methods = ['POST'])
 def compare():
+    # warning message for no statement entered
     if (len(request.form['text1']) == 0 or len(request.form['text2']) == 0):
         flash("Please enter two statements.")
         return render_template('compare.html')
@@ -121,6 +134,7 @@ def compare():
     st2 = []
     str1 = ""
     str2 = ""
+    # add features, model names to session, which would be used in the feedback part
     session['featureSt1'] = []
     session['featureSt1'] = []
     session['persModSt1'] = []
@@ -162,6 +176,7 @@ def compare():
     else:
         flash("Based on above results, the two statements are equally persuasive.")
 
+    # add statemnt to session, which would be used in the feedbback part
     session['statement1'] = request.form['text1']
     session['statement2'] = request.form['text2']
     session['featureSt1'] = tool.gettingFeatures(request.form['text1'])
@@ -169,6 +184,7 @@ def compare():
 
     return render_template('feedbackCompare1.html', feedbackText=session['statement1'])
 
+# add feedbacks for check to local databse
 @app.route('/feedback', methods = ['POST'])
 def feedback():
     pers = ", ".join(session['checkPersModels'])
@@ -181,6 +197,7 @@ def feedback():
     flash('Thank you for your feedback!')
     return redirect(url_for('index'))
 
+# add feedbacks for compare to local database
 @app.route('/feedbackCompare1', methods = ['POST', 'GET'])
 def feedbackCompare1():
     pers = ", ".join(session['persModSt1'])
@@ -191,6 +208,7 @@ def feedbackCompare1():
     g.db.commit()
     return render_template('feedbackCompare2.html', feedbackText=session['statement2'])
 
+# add feedbacks for compare to local database
 @app.route('/feedbackCompare2', methods = ['POST', 'GET'])
 def feedbackCompare2():
     pers = ", ".join(session['persModSt2'])
@@ -202,6 +220,7 @@ def feedbackCompare2():
     flash('Thank you for your feedback!')
     return redirect(url_for('index'))
 
+# handle the admin login event
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -216,6 +235,7 @@ def login():
             return redirect(url_for('admin'))
     return render_template('login.html', error=error)
 
+# get all the information needed in the database to display on the admin page
 @app.route('/admin')
 def admin():
     if not session.get('logged_in'):
@@ -225,12 +245,14 @@ def admin():
     feedbacks = [[row[0], row[1], row[2], row[3], row[4]] for row in cur.fetchall()]
     return render_template('admin.html', feedbacks=feedbacks)
 
+# clear all entries in the databse
 @app.route('/admin/init', methods = ['POST'])
 def init():
     init_db();
     flash("Initiated the database successfully!")
     return redirect(url_for('admin'))
 
+# export data in local database to persuasiveClassification.csv and npersuasiveClassification.csv
 @app.route('/admin/export', methods = ['POST'])
 def export():
     persPath = os.path.join("app", "persuasiveClassification.csv")
