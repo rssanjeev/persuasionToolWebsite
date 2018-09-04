@@ -257,6 +257,8 @@ def init():
 def export():
     persPath = os.path.join("app", "persuasiveClassification.csv")
     npersPath = os.path.join("app", "npersuasiveClassification.csv")
+    dirPath = os.path.join("app", "download")
+    filename = "persuasiveClassification.csv"
     pers = open(persPath, "a")
     npers = open(npersPath, "a")
     cur = g.db.execute('select textFeedback, textInput, persModels, nonpersModels, persuasive, wordCount, readabilityScore, ReadabilityGrade, DiractionCount, WPS, Sixltr, pronoun, ppron, i, you, ipron, prep, auxverb, negate, numbers, focuspast, focuspresent, AllPunc, Comma, QMark, Exemplify from feedbacks order by id desc')
@@ -325,7 +327,7 @@ def export():
             npers.write(row)
 
     flash("Exported " + str(len(data)) + " records successfully!")
-    return redirect(url_for('admin'))
+    return send_from_directory(dirpath, filename, as_attachment=True)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
