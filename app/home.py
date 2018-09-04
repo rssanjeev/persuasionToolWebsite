@@ -327,7 +327,7 @@ def export():
             npers.write(row)
 
     flash("Exported " + str(len(data)) + " records successfully!")
-    return send_from_directory(dirpath, filename, as_attachment=True)
+    return send_from_directory(dirPath, filename, as_attachment=True)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
