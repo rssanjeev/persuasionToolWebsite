@@ -12,7 +12,7 @@ class Config(object):
 class ProductionConfig(Config):
     # PASSWORD = 'bitslabpersuasion'
     PASSWORD = 'bitslabpersuasion'
-    SQLALCHEMY_DATABASE_URI = 'postgres://egdwpxluzvtmbi:b8b7e7d969d088edadeea313de23ba35f24251463b3f6f968d6d623a93f352ba@ec2-54-227-244-12.compute-1.amazonaws.com:5432/dagcpfn26ejbh4'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 class DevelopmentConfig(Config):
     DEBUG = True
