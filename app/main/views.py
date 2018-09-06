@@ -198,9 +198,9 @@ def feedbackCompare2():
 def login():
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
-            flash('Wrong username')
+            flash('Wrong username/password')
         elif request.form['password'] != app.config['PASSWORD']:
-            flash('Invalid password')
+            flash('Wrong username/password')
         else:
             session['logged_in'] = True
             flash('You were logged in')
