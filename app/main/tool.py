@@ -1,4 +1,3 @@
-# from appJar import gui
 import numpy
 import re
 from sklearn.externals import joblib

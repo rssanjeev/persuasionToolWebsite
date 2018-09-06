@@ -1,5 +1,6 @@
 from . import db
 
+# define the database models in this file
 class Feedbacks(db.Model):
     __tablename__ = 'feedbacks'
 
