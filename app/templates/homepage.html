@@ -8,7 +8,7 @@
             <h1>Persuasion Tool</h1>
         </div>
         <div class=adminEntry>
-            <a href="{{ url_for('login') }}">Admin</a>
+            <a href="{{ url_for('main.login') }}">Admin</a>
         </div>
         <div class=clear></div>
     </div>
@@ -21,7 +21,7 @@
         </p>
     </div>
     <div class=switchContainer>
-        <form action="{{ url_for('switch') }}" method=post>
+        <form action="{{ url_for('main.switch') }}" method=post>
             <div class=switchToCheck>
                 <input class=submitButton name=switch type=submit value="Check a statement">
             </div>

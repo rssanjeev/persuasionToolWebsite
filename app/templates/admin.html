@@ -7,7 +7,7 @@
         <h1>Admin</h1>
     </div>
     <div class=adminEntry>
-        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('main.index') }}">Home</a>
     </div>
     <div class=clear></div>
 </div>
@@ -32,12 +32,12 @@
         {% endfor %}
     </table>
     <div class=init>
-        <form action="{{ url_for('init') }}" method=post>
+        <form action="{{ url_for('main.init') }}" method=post>
             <input class=submitButton type=submit value="Initiate database">
         </form>
     </div>
     <div class=export>
-        <form action="{{ url_for('export') }}" method=post>
+        <form action="{{ url_for('main.export', filename='Feedbacks.csv') }}" method=get>
             <input class=submitButton type=submit value=Export>
         </form>
     </div>
