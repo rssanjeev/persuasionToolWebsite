@@ -1,4 +1,4 @@
-This is the Persuasion Tool Website developed for BITSLAB.
+This is the Persuasion Tool Website developed by Trent for BITSLAB.
 
 - app
   - main
