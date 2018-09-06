@@ -233,28 +233,31 @@ def export(filename):
     totalNum = Feedbacks.query.count();
     dirpath = os.path.join('app', 'static', 'download')
     filepath = os.path.join(dirpath, filename)
+    if os.path.exists(filepath):
+        os.remove(filepath)
+
     with open(filepath, 'a') as csvfile:
         # !!!!!!!!!!!! DO NOT try to remove this part, this part can be used to create the head for the csv file
-        # rowHead = ["SID", "text", "id", "tfidf", "deltaAwarded", "created", "numComments",
-        #         "existingComments", "differenceInSeconds", "differenceInDays", "readabilityScore",
-        #         "words", "syllables", "sentences", "authorFlair", "additionCount", "conseqCount",
-        #         "contrastCount", "directionCount", "diversionCount", "incidentallyCount", "exceptionCount",
-        #         "exemplifyCount", "generalizingCount", "illustrationCount", "similarityCount",
-        #         "restatementCount", "sequenceCount", "summerizingCount", "allTransitions",
-        #         "lexicalOverlapScore", "lexicalDiversityScore", "relevanceRankMetric",
-        #         "relevancerank", "temporalRankMetric", "WC", "Analytic", "Clout", "Authentic",
-        #         "Tone", "WPS", "Sixltr", "Dic", "function", "pronoun", "ppron", "i", "we", "you",
-        #         "shehe", "they", "ipron", "article", "prep", "auxverb", "adverb", "conj", "negate",
-        #         "verb", "adj", "compare", "interrog", "number", "quant", "affect", "posemo", "negemo",
-        #         "anx", "anger", "sad", "social", "family", "friend", "female", "male", "cogproc",
-        #         "insight", "cause", "discrep", "tentat", "certain", "differ", "percept", "see", "hear",
-        #         "feel", "bio", "body", "health", "sexual", "ingest", "drives", "affiliation", "achieve",
-        #         "power", "reward", "risk", "focuspast", "focuspresent", "focusfuture", "relativ", "motion",
-        #         "space", "time", "work", "leisure", "home", "money", "relig", "death", "informal", "swear",
-        #         "netspeak", "assent", "nonflu", "filler", "AllPunc", "Period", "Comma", "Colon", "SemiC",
-        #         "QMark", "Exclam", "Dash", "Quote", "Apostro", "Parenth", "OtherP"]
-        # firstRow = ','.join(rowHead)
-        # csvfile.write(firstRow)
+        rowHead = ["SID", "text", "id", "tfidf", "deltaAwarded", "created", "numComments",
+                "existingComments", "differenceInSeconds", "differenceInDays", "readabilityScore",
+                "words", "syllables", "sentences", "authorFlair", "additionCount", "conseqCount",
+                "contrastCount", "directionCount", "diversionCount", "incidentallyCount", "exceptionCount",
+                "exemplifyCount", "generalizingCount", "illustrationCount", "similarityCount",
+                "restatementCount", "sequenceCount", "summerizingCount", "allTransitions",
+                "lexicalOverlapScore", "lexicalDiversityScore", "relevanceRankMetric",
+                "relevancerank", "temporalRankMetric", "WC", "Analytic", "Clout", "Authentic",
+                "Tone", "WPS", "Sixltr", "Dic", "function", "pronoun", "ppron", "i", "we", "you",
+                "shehe", "they", "ipron", "article", "prep", "auxverb", "adverb", "conj", "negate",
+                "verb", "adj", "compare", "interrog", "number", "quant", "affect", "posemo", "negemo",
+                "anx", "anger", "sad", "social", "family", "friend", "female", "male", "cogproc",
+                "insight", "cause", "discrep", "tentat", "certain", "differ", "percept", "see", "hear",
+                "feel", "bio", "body", "health", "sexual", "ingest", "drives", "affiliation", "achieve",
+                "power", "reward", "risk", "focuspast", "focuspresent", "focusfuture", "relativ", "motion",
+                "space", "time", "work", "leisure", "home", "money", "relig", "death", "informal", "swear",
+                "netspeak", "assent", "nonflu", "filler", "AllPunc", "Period", "Comma", "Colon", "SemiC",
+                "QMark", "Exclam", "Dash", "Quote", "Apostro", "Parenth", "OtherP"]
+        firstRow = ','.join(rowHead)
+        csvfile.write(firstRow)
 
         allFeedbacks = Feedbacks.query
         for f in allFeedbacks:

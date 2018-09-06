@@ -12,7 +12,7 @@ class Config(object):
 class ProductionConfig(Config):
     # PASSWORD = 'bitslabpersuasion'
     PASSWORD = 'bitslabpersuasion'
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    # SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 class DevelopmentConfig(Config):
     DEBUG = True
